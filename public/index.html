@@ -1,30 +1,15 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-    />
-    <title>BangBall</title>
-    <link rel="icon" href="bangball.png" type="image/x-icon">
+<html lang="en">
+<head>
+    <title>Metric | Home</title>
+    <link rel="icon" type="image/x-icon" href="images/bum.png">
+    <link id="stylesheet" rel="stylesheet" href="css/main(dark).css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta
-      name="description"
-      content="Ultraviolet is a highly sophisticated proxy used for evading internet censorship or accessing websites in a controlled sandbox using the power of service-workers. Unblock sites today!"
-    />
-    <meta
-      name="keywords"
-      content="proxy, bangball, web proxy, ultraviolet, service workers, unblock websites, unblock chromebook, free web proxy, proxy list, proxy sites, un block chromebook, online proxy, proxy server, proxysite, proxy youtube, bypass securly, bypass iboss, bypass lightspeed filter, holy unblocker, chromebooks, titanium network, unblock youtube, youtube proxy, unblocked youtube, youtube unblocked"
-    />
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: dark)"
-      content="#434c5e"
-    />
-    <meta name="googlebot" content="index, follow, snippet" />
-    <link rel="shortcut icon" content="favicon.ico" />
-    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
     <script src="baremux/bare.cjs" defer></script>
     <script src="epoxy/index.js" defer></script>
     <script src="uv/uv.bundle.js" defer></script>
@@ -32,6 +17,7 @@
     <script src="register-sw.js" defer></script>
     <script src="search.js" defer></script>
     <script src="index.js" defer></script>
+    <script src="/path/to/transport/index.js" defer></script> 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -66,50 +52,26 @@
     </script>
   </head>
 
-  <body>
-    <div
-      title="DO NOT CLICK"
-      class="flex-center logo-wrapper header-center"
-    >
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <style>
-            .rotate {
-                animation: rotation 2s infinite linear;
-                justify-self: center;
-                align-self: center;
-                
-            }
-    
-            @keyframes rotation {
-                from {
-                    transform: rotate(0deg);
-                }
-                to {
-                    transform: rotate(359deg);
-                }
-            }
-        </style>
-        
-    </head>
-    <body>
-      <script>
-        // Function to redirect when the image is clicked
-        function redirectToLink() {
-          window.location.href = 'https://bouncyballs.org/'; // BALLS
-        }
-      </script>
-    </head>
-    <body>
-      <!-- click it -->
-      <a href="javascript:void(0)" onclick="redirectToLink()">
-        <img src="uv.png" alt="Rotating Image" class="rotate" width="200" height="200">
-      </a>
+    <div class="navbar">
+        <div>
+          <M>M<M>
+            <a href="index.html">HOME</a>
+            <a href="changelog.html">CHANGELOG</a>
+            <a href="settings.html">SETTINGS</a>
+        </div>
 
-    </body>
-    </html>
-      <h1></h1>
+        <button id="modeToggle">Toggle Dark/Light</button>
+
+
+        
+        
+      </div>
+    <div class="content">
+        <div class="header"><h1>METRIC</h1></div>
+    </div>
+    
+    <center>
+        <h1></h1>
     </div>
     <div class="flex-center desc left-margin">
       <p>
@@ -131,7 +93,63 @@
     </div>
 
     <iframe style="display: none;" id="uv-frame"></iframe>
-    <footer><a href="https://www.youtube.com/@probablylogi">My Youtube</a>
-      <a href="https://github.com/RealLogiDev/BangBall">BangBall Github</a></footer>
-  </body>
+    </center>
+    <script>
+        var darkModeEnabled = false;
+
+        // Function to set cookie
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        // Function to get cookie
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Check for saved mode preference in cookies
+        window.onload = function() {
+            var mode = getCookie("mode");
+            if (mode === "dark") {
+                darkModeEnabled = true;
+                toggleMode();
+            } else {
+                darkModeEnabled = false;
+                toggleMode();
+            }
+        };
+
+        // Toggle mode and save preference in cookie
+        document.getElementById("modeToggle").addEventListener("click", function() {
+            darkModeEnabled = !darkModeEnabled;
+            toggleMode();
+            setCookie("mode", darkModeEnabled ? "dark" : "light", 365);
+        });
+
+        function toggleMode() {
+            if (darkModeEnabled) {
+                document.getElementById("stylesheet").href = "css/main(dark).css";
+            } else {
+                document.getElementById("stylesheet").href = "css/main(light).css";
+            }
+        }
+    </script>
+            <p>-v0.1.0-</p>
+</body>
+</html>
+    
+</body>
 </html>
